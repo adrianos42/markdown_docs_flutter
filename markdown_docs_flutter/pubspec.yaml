@@ -1,0 +1,28 @@
+name: markdown_docs_flutter
+description: Creates flutter widgets from markdown text.
+version: 1.0.0-dev.1
+# homepage:
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  desktop: any
+  markdown_docs: 
+    path: ../../markdown_docs
+  jovial_svg: ^1.1.6
+  url_launcher: ^6.0.3
+
+dependency_overrides:
+  desktop:
+    path: ../../desktop/desktop
+  markdown_docs:
+    path: ../../markdown_docs
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1

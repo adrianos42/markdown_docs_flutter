@@ -1,0 +1,28 @@
+name: editor
+description: A markdown editor.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  desktop: any
+  file_selector: ^0.9.2+2
+  markdown_docs_flutter: any
+
+dependency_overrides:
+  desktop:
+    path: ../../../desktop/desktop
+  markdown_docs_flutter:
+    path:
+      ../../markdown_docs_flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
