@@ -1,2 +1,3 @@
-# markdown_docs_flutter
+# Markdown docs flutter
+
 Creates flutter widgets from markdown text.
