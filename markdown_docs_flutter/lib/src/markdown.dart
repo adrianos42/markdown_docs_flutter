@@ -131,7 +131,7 @@ class _MarkdownImageState extends State<MarkdownImage> {
 
   Widget _getNetworkImage(Uri uri) {
     if (path.extension(uri.path) == '.svg') {
-      throw 'Unsupported data format!';
+      return _errorBuilder();
     } else {
       return Image.network(
         uri.toString(),
@@ -148,7 +148,7 @@ class _MarkdownImageState extends State<MarkdownImage> {
       return _getNetworkImage(uri);
     } else if (uri.scheme == 'data') {
       if (_resolveTypeFromMimeType(uri.data!.mimeType) == 'svg') {
-        throw 'Unsupported data format!';
+        return _errorBuilder();
       } else {
         return Image.memory(
           uri.data!.contentAsBytes(),
@@ -157,7 +157,7 @@ class _MarkdownImageState extends State<MarkdownImage> {
       }
     } else if (uri.scheme.isEmpty) {
       if (path.extension(uri.path) == '.svg') {
-        throw 'Unsupported data format!';
+        return _errorBuilder();
       } else {
         return Image.asset(
           uri.path,

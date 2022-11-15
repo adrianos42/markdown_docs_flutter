@@ -11,8 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   desktop: any
-  markdown_docs: 
-    path: ../../markdown_docs
+  markdown_docs: ^1.0.0-dev.2
   jovial_svg: ^1.1.6
   url_launcher: ^6.0.3
 
