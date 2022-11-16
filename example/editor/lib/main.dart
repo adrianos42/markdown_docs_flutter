@@ -49,12 +49,17 @@ class _HomeState extends State<Home> {
   late TextEditingController titletextEditingController;
 
   void _openFile() async {
-    const typeGroup =
-        XTypeGroup(label: 'markdown text', extensions: ['md']);
+    setState(() => _isOpeningFile = true);
+
+    const typeGroup = XTypeGroup(label: 'markdown text', extensions: ['md']);
 
     final file = await openFile(acceptedTypeGroups: [typeGroup]);
 
-    controller.text = await file!.readAsString();
+    if (file != null) {
+      controller.text = await file.readAsString();
+    }
+
+    setState(() => _isOpeningFile = false);
   }
 
   void _saveFile() async {
@@ -62,6 +67,8 @@ class _HomeState extends State<Home> {
     final savePath = await getSavePath(suggestedName: fileName);
 
     if (savePath != null) {
+      setState(() => _isSavingFile = true);
+
       final fileData = Uint8List.fromList(controller.text.codeUnits);
       final textFile = XFile.fromData(
         fileData,
@@ -70,8 +77,13 @@ class _HomeState extends State<Home> {
       );
 
       await textFile.saveTo(savePath);
+
+      setState(() => _isSavingFile = false);
     }
   }
+
+  bool _isOpeningFile = false;
+  bool _isSavingFile = false;
 
   Widget _createHeader() {
     final themeData = Theme.of(context);
@@ -86,12 +98,14 @@ class _HomeState extends State<Home> {
       child: Row(
         children: [
           Button.icon(
-            Icons.file_upload,
+            Icons.file_open,
             onPressed: _openFile,
+            active: _isOpeningFile,
           ),
           Button.icon(
             Icons.save,
             onPressed: _saveFile,
+            active: _isSavingFile,
           ),
           SizedBox(
             width: 200.0,
@@ -183,13 +197,15 @@ class _HomeState extends State<Home> {
             scrollController.offset / scrollController.position.maxScrollExtent;
         final position = textScrollController.position;
 
-        textScrollController.jumpTo(
-          clampDouble(
-            position.maxScrollExtent * extent,
-            position.minScrollExtent,
-            position.maxScrollExtent,
-          ),
-        );
+        if (!position.isScrollingNotifier.value) {
+          position.jumpTo(
+            clampDouble(
+              position.maxScrollExtent * extent,
+              position.minScrollExtent,
+              position.maxScrollExtent,
+            ),
+          );
+        }
       }
     });
 
@@ -199,13 +215,15 @@ class _HomeState extends State<Home> {
             textScrollController.position.maxScrollExtent;
         final position = scrollController.position;
 
-        scrollController.jumpTo(
-          clampDouble(
-            position.maxScrollExtent * extent,
-            position.minScrollExtent,
-            position.maxScrollExtent,
-          ),
-        );
+        if (!position.isScrollingNotifier.value) {
+          position.jumpTo(
+            clampDouble(
+              position.maxScrollExtent * extent,
+              position.minScrollExtent,
+              position.maxScrollExtent,
+            ),
+          );
+        }
       }
     });
   }
@@ -241,7 +259,9 @@ class _HomeState extends State<Home> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _createHeader(),
-        Expanded(child: result),
+        Expanded(
+          child: result,
+        ),
       ],
     );
   }

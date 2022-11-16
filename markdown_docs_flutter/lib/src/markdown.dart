@@ -6,6 +6,7 @@ import 'package:desktop/desktop.dart';
 import 'package:flutter/foundation.dart';
 import 'package:markdown_docs/markdown_docs.dart' as md;
 import 'package:path/path.dart' as path;
+
 import 'render.dart';
 
 /// A widget for markdown content.
@@ -136,7 +137,7 @@ class _MarkdownImageState extends State<MarkdownImage> {
       return Image.network(
         uri.toString(),
         errorBuilder: (context, _, __) => _errorBuilder(),
-      );
+      ); 
     }
   }
 

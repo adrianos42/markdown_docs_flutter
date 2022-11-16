@@ -69,10 +69,12 @@ class FlutterRendererCode implements md.NodeVisitor {
 
   @override
   void visitText(md.Text text) {
+    final textContent = text.textContent.replaceAll('\n', ' ');
+
     if (_hasOpenSpan.last) {
-      _spans.last.add(TextSpan(text: text.textContent));
+      _spans.last.add(TextSpan(text: textContent));
     } else {
-      _children.last.add(Text(text.textContent));
+      _children.last.add(Text(textContent));
     }
   }
 

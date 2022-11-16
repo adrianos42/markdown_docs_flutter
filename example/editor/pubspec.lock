@@ -197,7 +197,7 @@ packages:
       path: "../../../markdown_docs"
       relative: true
     source: path
-    version: "1.0.0-dev.1"
+    version: "1.0.0-dev.2"
   markdown_docs_flutter:
     dependency: "direct main"
     description:
