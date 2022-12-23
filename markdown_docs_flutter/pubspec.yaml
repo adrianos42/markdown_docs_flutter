@@ -10,16 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  desktop: ^4.0.0-dev.6
-  markdown_docs: ^1.0.0-dev.3
+  #desktop: ^4.0.0-dev.6
+  #markdown_docs: ^1.0.0-dev.3
   url_launcher: ^6.0.3
   path: ^1.8.2
-
-dependency_overrides:
   desktop:
     path: ../../desktop/desktop
   markdown_docs:
     path: ../../markdown_docs
+  
 
 dev_dependencies:
   flutter_test:

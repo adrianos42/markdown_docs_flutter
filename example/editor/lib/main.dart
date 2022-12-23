@@ -18,8 +18,8 @@ void main() {
   );
 }
 
-const markdownText = '''
-# doc
+const markdownText = r'''
+# Docs
 ''';
 
 class Home extends StatefulWidget {
@@ -41,12 +41,11 @@ enum Visibility {
 
 class _HomeState extends State<Home> {
   late TextEditingController controller;
+  late TextEditingController titletextEditingController;
 
   final textScrollController = ScrollController();
   final scrollController = ScrollController();
   Visibility visibility = Visibility.split;
-
-  late TextEditingController titletextEditingController;
 
   void _openFile() async {
     setState(() => _isOpeningFile = true);
@@ -158,6 +157,7 @@ class _HomeState extends State<Home> {
   Widget _buildEdit() {
     return TextField(
       controller: controller,
+      style: Theme.of(context).textTheme.monospace,
       scrollController: textScrollController,
       maxLines: null,
       expands: true,
