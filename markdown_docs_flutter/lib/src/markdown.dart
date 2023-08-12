@@ -126,7 +126,7 @@ class _MarkdownImageState extends State<MarkdownImage> {
     if (widget.title != null || widget.alternative != null) {
       return Text(widget.title ?? widget.alternative!);
     } else {
-      return const Icon(Icons.image_not_supported);
+      return const Icon(Icons.imageNotSupported);
     }
   }
 

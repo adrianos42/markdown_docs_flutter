@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
       child: Row(
         children: [
           Button.icon(
-            Icons.file_open,
+            Icons.fileOpen,
             onPressed: _openFile,
             active: _isOpeningFile,
           ),

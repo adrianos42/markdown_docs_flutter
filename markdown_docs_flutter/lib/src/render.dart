@@ -663,7 +663,7 @@ class FlutterRendererCode implements md.NodeVisitor {
       padding: const EdgeInsets.only(right: 8.0),
       child: Checkbox(
         value: checkbox.checked,
-        themeData: const CheckboxThemeData(
+        theme: const CheckboxThemeData(
           containerSize: 16.0,
         ),
       ),
@@ -724,7 +724,7 @@ class FlutterRendererCode implements md.NodeVisitor {
         : Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Icon(
-              Icons.radio_button_unchecked,
+              Icons.radioButtonUnchecked,
               color: textTheme.textLow,
               size: 8.0,
             ),

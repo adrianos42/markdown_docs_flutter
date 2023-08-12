@@ -1,23 +1,22 @@
 name: markdown_docs_flutter
 description: Creates flutter widgets from markdown text.
-version: 1.0.0-dev.2
+version: 1.0.0-dev.3
 homepage: https://adrianos42.github.io/markdown_docs_flutter
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  #desktop: ^4.0.0-dev.6
-  #markdown_docs: ^1.0.0-dev.3
+  desktop: ^5.0.0-dev.3
+  markdown_docs: any
   url_launcher: ^6.0.3
   path: ^1.8.2
-  desktop:
-    path: ../../desktop/desktop
-  markdown_docs:
-    path: ../../markdown_docs
+  # desktop:
+  #   path: ../../desktop/desktop
+  # markdown_docs:
+  #   path: ../../markdown_docs
   
 
 dev_dependencies:
